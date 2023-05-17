@@ -19,7 +19,6 @@ class ShapeMatching():
         self.bottle = bottle
         self.problem_occurred = False
         self.raw_shape: np.ndarray = None
-        self.shape: np.ndarray = None
         self.cropped_img: np.ndarray = None
         self.cropped_adjusted: np.ndarray = None
         self.starting_bottle_width: int = None
@@ -57,6 +56,7 @@ class ShapeMatching():
             shape = cv.morphologyEx(shape, cv.MORPH_CLOSE, MORPH_CLOSING_KERNEL)
             # attributes assignment
             self.raw_shape = shape
+            self.bottle.shape = shape
 
     def crop_shape(self) -> None:
         """Method crops the raw bottle shape photo so there is a certain number of pixels left from shape to edge of image. 
@@ -116,7 +116,7 @@ class ShapeMatching():
         self.cropped_adjusted = cv.morphologyEx(new_img, cv.MORPH_CLOSE, MORPH_CLOSING_KERNEL)      
 
     def match_shape(self) -> None:
-        """Method determines bottle brand by matching its shape with shape examples for brands."""
+        """Method determines bottle brand by matching its shape with shape examples of bottles of different brands and assigns brand name as attribute to BottlePhoto object."""
 
         # loading grayscale shape example images
         examples = [cv.cvtColor(cv.imread(WIT_SHAPE_EXAMPLE), cv.COLOR_BGR2GRAY), cv.cvtColor(cv.imread(RIVIVA_SHAPE_EXAMPLE), cv.COLOR_BGR2GRAY), cv.cvtColor(cv.imread(SOMERSBY_SHAPE_EXAMPLE), cv.COLOR_BGR2GRAY)]
