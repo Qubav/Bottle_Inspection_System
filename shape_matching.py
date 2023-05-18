@@ -61,7 +61,7 @@ class ShapeMatching():
             shape = cv.morphologyEx(shape, cv.MORPH_CLOSE, MORPH_CLOSING_KERNEL)
             # attributes assignment
             self.raw_shape = shape
-            self.bottle.shape = shape
+            self.bottle.shape_img = shape
 
     def crop_shape(self) -> None:
         """Method crops the raw bottle shape photo so there is a certain number of pixels left from shape to edge of image. 
