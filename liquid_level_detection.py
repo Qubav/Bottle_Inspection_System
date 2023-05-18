@@ -30,6 +30,8 @@ class LiquidLevelDetection:
         self.get_liquid_color()
         if self.liquid_presence is True:
             self.get_liquid_level()
+        else:
+            self.bottle.img_with_bb_and_liquid_lvl = self.bottle.img_w_bounding_boxes
             
     def get_hsv_masked_img(self):
         """Method creates hsv image of bottle photo and adds mask to it, then assigns it as attribute."""
