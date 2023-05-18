@@ -127,6 +127,18 @@ class LabelDetection:
         # returning top and bottom edge of object height
         return top, bottom
 
+    def draw_single_bounding_box(self, object: str):
+
+        # operations to draw cap bounding box
+        top, bottom = self.get_object_placement(object = object)
+        middle = (bottom + top) // 2
+
+        left = next(i for i, val in enumerate(self.bottle.shape_img[middle]) if val > 0)
+        right = self.bottle.shape_img.shape[1] - next(i for i, val in enumerate(reversed(self.bottle.shape_img[middle])) if val > 0)
+
+        # drawing rectangle based on calculated coordinates
+        self.img_w_bounding_boxes =  cv.rectangle(self.img_w_bounding_boxes, [left, top], [right, bottom], BOUNDING_BOX_COLOR, BOUNDING_BOX_LINE_THICKNESS)
+
     def draw_bounding_boxes(self):
         """Method draws bounding boxes around cap and label(if they are in the picture)."""
 
@@ -134,22 +146,7 @@ class LabelDetection:
         self.img_w_bounding_boxes = self.bottle.img.copy()
 
         if self.bottle.bottle_brand != "Somersby":
-            # operations to draw cap bounding box
-            top, bottom = self.get_object_placement(object = "cap")
-            middle = (bottom + top) // 2
-
-            left = next(i for i, val in enumerate(self.bottle.shape_img[middle]) if val > 0)
-            right = self.bottle.shape_img.shape[1] - next(i for i, val in enumerate(reversed(self.bottle.shape_img[middle])) if val > 0)
-
-            self.img_w_bounding_boxes =  cv.rectangle(self.img_w_bounding_boxes, [left, top], [right, bottom], BOUNDING_BOX_COLOR, BOUNDING_BOX_LINE_THICKNESS)
+            self.draw_single_bounding_box("cap")
 
         if self.no_label_fits is False:
-            # operations to draw label bounding box
-            # variables value reassignment
-            top, bottom = self.get_object_placement(object = "label")
-            middle = (bottom + top) // 2
-
-            left = next(i for i, val in enumerate(self.bottle.shape_img[middle]) if val > 0)
-            right = self.bottle.shape_img.shape[1] - next(i for i, val in enumerate(reversed(self.bottle.shape_img[middle])) if val > 0)
-
-            self.img_w_bounding_boxes =  cv.rectangle(self.img_w_bounding_boxes, [left, top], [right, bottom], BOUNDING_BOX_COLOR, BOUNDING_BOX_LINE_THICKNESS)
+            self.draw_single_bounding_box("label")
