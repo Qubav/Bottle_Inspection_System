@@ -18,7 +18,7 @@ def bottle_inspection_system(file_name: str, logger):
     if label_detection.no_label_fits is False:
         logger("The bottle has a label.")
     if liquid_level_detection.liquid_presence is True:
-        logger(f"There is liquid in the bottle. Liquid level is at {bottle.liquid_level}% od the bottle height.")
+        logger(f"There is liquid in the bottle. Liquid level is at {bottle.liquid_level}% of the bottle height.")
         if label_detection.no_label_fits is False:
             logger("Caution! Given liquid level value may be incorrect, because of possibility of liquid presence behind label.")
     else:
