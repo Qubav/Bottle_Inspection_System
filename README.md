@@ -1,12 +1,14 @@
 # Bottle Inspection System
 The project was created to allow the user to inspect the bottle by analyzing the photo. The program works only for specific bottles, filled with liquid of a specific color and placed on a specific background.\
 Used libraries: OpenCV, NumPy, PyQt5\
+
 Program main stages:
 - checking the bottle's brand
 - checking if there is a label on the bottle and adding bounding boxes around label and cap(if there are there)
 - checking if there is liquid inside bottle and adding line higlighing its level
 
 Each main stage of program consists of smaller steps. Steps for each stage are listed bellow.\
+
 Checking for bottle's brand:
 - getting image of bottles shape
 - cropping image and scaling it to set bottle's witdh to fixed value
