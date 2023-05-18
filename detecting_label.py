@@ -13,7 +13,7 @@ SOMERSBY_LABEL_TEMPLATES = ["Label_Templates/somer1.png", "Label_Templates/somer
 # global variables defining program work / bounding box appearance
 GOOD_MATCHES_MIN_NUMBER = 12
 BOUNDING_BOX_COLOR = (0, 255, 255)
-BOUNDING_BOX_LINE_THICKNESS = 5
+BOUNDING_BOX_LINE_THICKNESS = 4
 
 class LabelDetection:
 
@@ -128,11 +128,15 @@ class LabelDetection:
         return top, bottom
 
     def draw_single_bounding_box(self, object: str):
+        """Method draws single bounding box around label or cap based on input object string."""
 
-        # operations to draw cap bounding box
+        # getting coordinates
         top, bottom = self.get_object_placement(object = object)
+
+        # middle is used to calculate correct bounding box width
         middle = (bottom + top) // 2
 
+        # getting right and left values based on bottle shape edges in middle height value
         left = next(i for i, val in enumerate(self.bottle.shape_img[middle]) if val > 0)
         right = self.bottle.shape_img.shape[1] - next(i for i, val in enumerate(reversed(self.bottle.shape_img[middle])) if val > 0)
 
@@ -150,3 +154,5 @@ class LabelDetection:
 
         if self.no_label_fits is False:
             self.draw_single_bounding_box("label")
+        
+        self.bottle.img_w_bounding_boxes = self.img_w_bounding_boxes
