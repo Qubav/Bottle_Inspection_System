@@ -41,6 +41,8 @@ Different bottle inspection examples:
 
 ![image](https://github.com/Qubav/Bottle_Inspection_System/assets/124883831/cb483ede-ed5b-41f3-8317-5022409166dd)
 
+![image](https://github.com/Qubav/Bottle_Inspection_System/assets/124883831/03f8b754-52df-46ef-9e5b-f747ea005133)
+
 ![image](https://github.com/Qubav/Bottle_Inspection_System/assets/124883831/554f325e-a4c5-4d33-8df7-c38ee23014d2)
 
 ![image](https://github.com/Qubav/Bottle_Inspection_System/assets/124883831/5052caf9-1480-4ce3-93e3-c8652b0b3845)
