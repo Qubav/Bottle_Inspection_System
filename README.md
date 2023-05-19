@@ -1,31 +1,36 @@
 # Bottle Inspection System
-The project was created to allow the user to inspect the bottle by analyzing the photo. The program works only for specific bottles, filled with liquid of a specific color and placed on a specific background. The photos used in the project were taken by me.
+
+The project was created to allow the user to inspect the bottle by analyzing the photo. The program works only for specific bottles filled with liquid of a specific color and placed on a specific background. The photos used in the project were taken by me.
 
 Used libraries: OpenCV, NumPy, PyQt5
 
-Program main stages:
-- checking the bottle's brand
-- checking if there is a label on the bottle and adding bounding boxes around label and cap(if there are there)
-- checking if there is liquid inside bottle and adding line higlighing its level
+## Program main stages:
 
-Each main stage of program consists of smaller steps. Steps for each stage are listed bellow.
+1. Checking the bottle's brand.
+2. Checking if there is a label on the bottle and adding bounding boxes around the label and cap (if they are present).
+3. Checking if there is liquid inside the bottle and adding a line highlighting its level.
 
-Checking for bottle's brand:
-- getting image of bottles shape
-- cropping image and scaling it to set bottle's witdh to fixed value
-- comparison with example shapes
+Each main stage of the program consists of smaller steps. The steps for each stage are listed below.
 
-Checking if there is a label on the bottle and adding bounding boxes around label and cap(if there are there):
-- finding key points on bottle photo and images with label example
-- comparison found key points and determining if there is label that fits(or fits most)
-- checking label and cap placement on photo
-- adding bounding boxes to photo
+### Checking for the bottle's brand:
 
-Checking if there is liquid inside bottle and adding line higlighing its level:
-- changing photo from BGR to HSV and adding masks
-- checking if there is liquid by checking for number of pixels representing one of two possible colors of fluid and comparing this number to number of pixels that represents bottle shape
-- checking liquid level by using lateral histogram and image with pixels representing liquid color colored white on black background
-- adding red line highlighting liquid level to photo
+1. Getting an image of the bottle's shape.
+2. Cropping the image and scaling it to set the bottle's width to a fixed value.
+3. Comparing with example shapes.
+
+### Checking if there is a label on the bottle and adding bounding boxes around the label and cap (if they are present):
+
+1. Finding key points on the bottle photo and images with label examples.
+2. Comparing the found key points and determining if there is a label that fits (or fits the most).
+3. Checking the label and cap placement on the photo.
+4. Adding bounding boxes to the photo.
+
+### Checking if there is liquid inside the bottle and adding a line highlighting its level:
+
+1. Changing the photo from BGR to HSV and adding masks.
+2. Checking if there is liquid by checking for the number of pixels representing one of two possible colors of the fluid and comparing this number to the number of pixels that represent the bottle shape.
+3. Checking the liquid level by using a lateral histogram and an image with pixels representing the liquid color colored white on a black background.
+4. Adding a red line highlighting the liquid level to the photo.
 
 # Demo:
 GUI:\
